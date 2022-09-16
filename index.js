@@ -1,6 +1,9 @@
 //Itens piratas de One Piece
 
-//(A) Passando os antigos items para Objeto:
+//Variável para armazenar o nome do Pirata que o usuário deseja buscar
+const buscaNome = prompt("Digite o nome do pirata que busca")
+
+//3 variáveis com objetos com diferentes propriedades (string, number, boolean e array)
 const pirata1 = {
     nome: "Monkey D. Luffy",
     recompensa: 3000000000,
@@ -9,7 +12,7 @@ const pirata1 = {
 }
 
 const pirata2 = {  
-    nome: "\"God\" Usopp", 
+    nome: "Usopp", 
     recompensa: 500000000,
     pirata: true,
     haki: ["Haki da Observação"]
@@ -18,58 +21,68 @@ const pirata2 = {
 const pirata3 = {
     nome: "Kizaro",
     recompensa: 0,
-    pirata: false,
+    pirata: true,
     haki: ["Haki do Armamento", "Haki da Observação"]
 }
 
-//(B) Criar um array vazio para guardar os objetos
+//Novo Array vazio para armazenar todos os objetos (pirata1, pirata2 e pirata 3) criados até aqui
 const listaPirata = []
 
-//(C) Adicionar os objetos criados do item 1 (pirata1, 2 e 3) para o item 2 (listaPirata)
-//listaPirata.push(pirata1,pirata2,pirata3) desabilitando para executar o item D
-
-//(D) Alterar o item C para fazer uma verificação antes de aplicar o push
+//Condicional para incluir na nova lista somente os personagens classificados como piratas (propriedade "pirata (boolean)" dos objetos
 if (pirata1.pirata === true){
     listaPirata.push(pirata1)
 }else{
-    console.log("ALERTA! O personagem ",pirata1.nome," é um Marinheiro!")
+    alert(`ALERTA! O personagem ${pirata2.nome} é um Marinheiro(a)`)
 }
 if (pirata2.pirata === true){
     listaPirata.push(pirata2)
 }else{
-    console.log("ALERTA! O personagem ",pirata2.nome," é um Marinheiro!")
+    alert(`ALERTA! O personagem ${pirata2.nome} é um Marinheiro(a)`)
 }
 if (pirata3.pirata === true){
     listaPirata.push(pirata3)
 }else{
-    console.log("ALERTA! O personagem ",pirata3.nome," é um Marinheiro!")
+    alert(`ALERTA! O personagem ${pirata3.nome} é um Marinheiro(a)`)
 }
 
+//Função utilizada para reescrever a propriedade dos meus objetos de array(haki) e
+//que ele guarde todas as propriedades em uma mesma string.
+function refatoracaoHaki (nakama){
+    let novoHaki ="" //declaração de uma variável vazia para receber os valores declarados na propriedade de array
+    for(let i=0;i<nakama.haki.length;i++){
+        novoHaki += nakama.haki[i]+", " //acrescentar cada valor armazenado nos indices do Array na nova variável
+    }
+    nakama.haki = novoHaki //devolver todo valor da nova variável a propriedade de array
+    return nakama
+}
+
+//A chamada da função é o que permite a modificação da propriedade com array(haki) em uma string
+refatoracaoHaki(pirata1)
+refatoracaoHaki(pirata2)
+refatoracaoHaki(pirata3)
+
+//Relatório anterior para exibição da Lista de Piratas
 console.log("Mural de Piratas: ", listaPirata)
 
-// //3. Faça uma média entre os valores númericos respectivos de cada item. Imprima o valor da média utilizando um console.log. 
-// //Guarde em uma const
+//Novo relatório criado utilizando laço
+for(let i=0;i<listaPirata.length;i++){
+    console.log(`Pirata ${i+1}`)
+    console.log(listaPirata[i])
+}
 
-// console.log("A média de recompensas é de "+(recompensa1+recompensa2+recompensa3)/contagem+" de berries")
+//Função para buscar um Pirata de acordo com o nome que o usuário digitar
+function buscaPirata(nakama, membro){
+    let buscador = ""
+    for(i=0;i<nakama.length;i++){
+        if(membro === nakama[i].nome){
+            buscador = nakama[i]
+        }
+    }
+    nakama = buscador
+    if(nakama === ""){
+        alert("Nada foi encontrado!")
+    }
+    return nakama
+}
 
-// //4. Imprima o resultado se todos os valores booleanos são verdadeiros
-
-// console.log("Todos os personagens são piratas? ",pirata1&&pirata2&&pirata3)
-
-// //5. Crie mais um item, deve ser um array. (Ok)
-
-// console.log("")
-// console.log("Nome: "+nome1.toUpperCase())
-// console.log("Recompensa: B. "+recompensa1)
-// console.log("Pirata(S/N): "+pirata1)
-// console.log("Haki: "+haki1)
-
-// console.log("Nome: "+nome2.toUpperCase())
-// console.log("Recompensa: B. "+recompensa2)
-// console.log("Pirata(S/N): "+pirata2)
-// console.log("Haki: "+haki2)
-
-// console.log("Nome: "+nome3.toUpperCase())
-// console.log("Recompensa: B. "+recompensa3)
-// console.log("Pirata(S/N): "+pirata3)
-// console.log("Haki: "+haki3)
+console.log(buscaPirata(listaPirata,buscaNome))
