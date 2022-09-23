@@ -1,88 +1,98 @@
-//Itens piratas de One Piece
+//Variável para armazenar o nome da Serie que o usuário deseja buscar
+const buscaNome = prompt("Digite a serie que busca").toLocaleUpperCase()
 
-//Variável para armazenar o nome do Pirata que o usuário deseja buscar
-const buscaNome = prompt("Digite o nome do pirata que busca")
-
-//3 variáveis com objetos com diferentes propriedades (string, number, boolean e array)
-const pirata1 = {
-    nome: "Monkey D. Luffy",
-    recompensa: 3000000000,
-    pirata: true,
-    haki: ["Haki do Rei","Haki do Armamento", "Haki da Observação"]
+//OBJETO + STRING + NUMBER + BOOLEAN + ARRAY
+const anime1 = {
+    nome: "One Piece",
+    avaliacao: 4.7,
+    emandamento: true,
+    genero: ["Ficção de Aventura","Fantasia"],
+    foto:""
 }
 
-const pirata2 = {  
-    nome: "Usopp", 
-    recompensa: 500000000,
-    pirata: true,
-    haki: ["Haki da Observação"]
+const anime2 = {  
+    nome: "Naruto Shippuden", 
+    avaliacao: 4.7,
+    emandamento: false,
+    genero: ["Ficção de Aventura","Fantasia Cômica","Artes Marciais"],
+    foto:""
 }
 
-const pirata3 = {
-    nome: "Kizaro",
-    recompensa: 0,
-    pirata: true,
-    haki: ["Haki do Armamento", "Haki da Observação"]
+const anime3 = {
+    nome: "Hunter x Hunter",
+    avaliacao: 4.8,
+    emandamento: true,
+    genero: ["Ficção de Aventura","Fantasia","Artes Marciais"],
+    foto:""
 }
 
-//Novo Array vazio para armazenar todos os objetos (pirata1, pirata2 e pirata 3) criados até aqui
-const listaPirata = []
+//CALCULAR MÉDIA
+let mediaAvaliacao = (anime1.avaliacao + anime2.avaliacao + anime3.avaliacao)/3
+console.log("A média de avaliação dos animes é: "+mediaAvaliacao)
 
-//Condicional para incluir na nova lista somente os personagens classificados como piratas (propriedade "pirata (boolean)" dos objetos
-if (pirata1.pirata === true){
-    listaPirata.push(pirata1)
+//VERIFICAÇÃO SE TODOS OS ANIMES (BOOLEANOS) ESTÃO EM ANDAMENTO (VERIFICAR SE TODOS OS BOOLEANOS SÃO VERDADEIROS)
+console.log("Todos os animes foram finalizados?\n"+(anime1.emandamento&&anime2.emandamento&&anime3.emandamento))
+
+//Novo Array vazio para armazenar todos os objetos (anime1, anime2 e anime3) criados até aqui
+const listaAnime = []
+
+//Condicional para incluir na nova lista somente as series classificados como finalizadas (propriedade "emandamento (boolean)" dos objetos
+if (anime1.emandamento === true){
+    listaAnime.push(anime1)
 }else{
-    alert(`ALERTA! O personagem ${pirata2.nome} é um Marinheiro(a)`)
+    alert(`A serie ${anime1.nome.toLocaleUpperCase()} já foi finalizada!`)
 }
-if (pirata2.pirata === true){
-    listaPirata.push(pirata2)
+if (anime2.emandamento === true){
+    listaAnime.push(anime2)
 }else{
-    alert(`ALERTA! O personagem ${pirata2.nome} é um Marinheiro(a)`)
+    alert(`A serie ${anime2.nome.toLocaleUpperCase()} já foi finalizada!`)
 }
-if (pirata3.pirata === true){
-    listaPirata.push(pirata3)
+if (anime3.emandamento === true){
+    listaAnime.push(anime3)
 }else{
-    alert(`ALERTA! O personagem ${pirata3.nome} é um Marinheiro(a)`)
+    alert(`A serie ${anime3.nome.toLocaleUpperCase()} já foi finalizada!`)
 }
 
-//Função utilizada para reescrever a propriedade dos meus objetos de array(haki) e
+//Função utilizada para reescrever a propriedade dos meus objetos de array(genero) e
 //que ele guarde todas as propriedades em uma mesma string.
-function refatoracaoHaki (nakama){
-    let novoHaki ="" //declaração de uma variável vazia para receber os valores declarados na propriedade de array
-    for(let i=0;i<nakama.haki.length;i++){
-        novoHaki += nakama.haki[i]+", " //acrescentar cada valor armazenado nos indices do Array na nova variável
+function refatoracaoAnime (serie){
+    let novoAnime ="" //declaração de uma variável vazia para receber os valores declarados na propriedade de array
+    for(let i=0;i<serie.genero.length;i++){
+        novoAnime += serie.genero[i]+", " //acrescentar cada valor armazenado nos indices do Array na nova variável
     }
-    nakama.haki = novoHaki //devolver todo valor da nova variável a propriedade de array
-    return nakama
+    serie.nome = serie.nome.toLocaleUpperCase()
+    serie.genero = novoAnime //devolver todo valor da nova variável a propriedade de array
+    return serie
 }
 
-//A chamada da função é o que permite a modificação da propriedade com array(haki) em uma string
-refatoracaoHaki(pirata1)
-refatoracaoHaki(pirata2)
-refatoracaoHaki(pirata3)
+//A chamada da função é o que permite a modificação da propriedade com array(genero) em uma string
+refatoracaoAnime(anime1)
+refatoracaoAnime(anime2)
+refatoracaoAnime(anime3)
 
-//Relatório anterior para exibição da Lista de Piratas
-console.log("Mural de Piratas: ", listaPirata)
+// //Relatório anterior para exibição da Lista de Animes
+console.log("Catálogo: ", listaAnime)
 
 //Novo relatório criado utilizando laço
-for(let i=0;i<listaPirata.length;i++){
-    console.log(`Pirata ${i+1}`)
-    console.log(listaPirata[i])
+for(let i=0;i<listaAnime.length;i++){
+    console.log(`Série ${i+1}`)
+    console.log(listaAnime[i])
 }
 
-//Função para buscar um Pirata de acordo com o nome que o usuário digitar
-function buscaPirata(nakama, membro){
+//Função para buscar uma série de acordo com o nome que o usuário digitar
+function buscaAnime(serie, item){
     let buscador = ""
-    for(i=0;i<nakama.length;i++){
-        if(membro === nakama[i].nome){
-            buscador = nakama[i]
+    for(i=0;i<serie.length;i++){
+        if(item === serie[i].nome){
+            serie[i].nome = serie[i].nome.toLocaleUpperCase()
+            buscador = serie[i]
         }
     }
-    nakama = buscador
-    if(nakama === ""){
+    serie = buscador
+    if(serie === ""){
         alert("Nada foi encontrado!")
     }
-    return nakama
+    return serie
 }
 
-console.log(buscaPirata(listaPirata,buscaNome))
+console.log("Resultado: ", buscaAnime(listaAnime,buscaNome))
