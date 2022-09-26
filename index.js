@@ -35,24 +35,29 @@ console.log("Todos os animes foram finalizados?\n"+(anime1.emandamento&&anime2.e
 
 //Novo Array vazio para armazenar todos os objetos (anime1, anime2 e anime3) criados até aqui
 const listaAnime = []
+const listaAnimeConcluido = []
 
 //Condicional para incluir na nova lista somente as series classificados como finalizadas (propriedade "emandamento (boolean)" dos objetos
 if (anime1.emandamento === true){
     listaAnime.push(anime1)
 }else{
+    listaAnimeConcluido.push(anime1)
     alert(`A serie ${anime1.nome.toLocaleUpperCase()} já foi finalizada!`)
 }
 if (anime2.emandamento === true){
     listaAnime.push(anime2)
 }else{
+    listaAnimeConcluido.push(anime2)
     alert(`A serie ${anime2.nome.toLocaleUpperCase()} já foi finalizada!`)
 }
 if (anime3.emandamento === true){
     listaAnime.push(anime3)
 }else{
+    listaAnimeConcluido.push(anime3)
     alert(`A serie ${anime3.nome.toLocaleUpperCase()} já foi finalizada!`)
 }
 
+//----- SEMANA 3 - ENUNCIADO 1
 //Função utilizada para reescrever a propriedade dos meus objetos de array(genero) e
 //que ele guarde todas as propriedades em uma mesma string.
 function refatoracaoAnime (serie){
@@ -70,15 +75,45 @@ refatoracaoAnime(anime1)
 refatoracaoAnime(anime2)
 refatoracaoAnime(anime3)
 
+//----- SEMANA 2 - ENUNCIADO 2
 // //Relatório anterior para exibição da Lista de Animes
+console.log("")
+console.log("-----RELATÓRIO ANTERIOR-----")
 console.log("Catálogo: ", listaAnime)
 
 //Novo relatório criado utilizando laço
-for(let i=0;i<listaAnime.length;i++){
-    console.log(`Série ${i+1}`)
-    console.log(listaAnime[i])
+console.log("")
+console.log("-----NOVO RELATÓRIO COM LAÇOS-----")
+
+for(titulo of listaAnime){
+    for(i in titulo){
+        console.log(`${i}: ${titulo[i]}`)
+    }
+    console.log("------")
 }
 
+//----- SEMANA 3 - ENUNCIADO 3
+
+function unicaString(obj) {
+    let text = "";
+    for (let i in obj) {
+      text = text + `${i}: ${obj[i]}\n`;
+    }
+    return text;
+  }
+  
+  const printObjsToStr = (titulos) => {
+    console.log(unicaString(titulos[0]));
+    console.log(unicaString(titulos[1]));
+  };
+  
+  console.log("")
+  console.log("-----RELATÓRIO COM TODOS OS VALORES EM STRING-----")
+  printObjsToStr(listaAnime);
+  printObjsToStr(listaAnimeConcluido);
+  
+
+//----- SEMANA 3 - ENUNCIADO 4
 //Função para buscar uma série de acordo com o nome que o usuário digitar
 function buscaAnime(serie, item){
     let buscador = ""
@@ -90,9 +125,11 @@ function buscaAnime(serie, item){
     }
     serie = buscador
     if(serie === ""){
-        alert("Nada foi encontrado!")
+        console.log("Nada foi encontrado!")
     }
     return serie
 }
 
-console.log("Resultado: ", buscaAnime(listaAnime,buscaNome))
+console.log("")
+console.log("-----RESULTADO DA BUSCA PELO TITULO DO ANIME -----")
+console.log(buscaAnime(listaAnime,buscaNome))
