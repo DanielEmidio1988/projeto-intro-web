@@ -13,7 +13,7 @@ const anime1 = {
 const anime2 = {  
     nome: "Naruto Shippuden", 
     avaliacao: 4.7,
-    emandamento: false,
+    emandamento: true,
     genero: ["Ficção de Aventura","Fantasia Cômica","Artes Marciais"],
     foto:""
 }
@@ -33,59 +33,75 @@ console.log("A média de avaliação dos animes é: "+mediaAvaliacao)
 //VERIFICAÇÃO SE TODOS OS ANIMES (BOOLEANOS) ESTÃO EM ANDAMENTO (VERIFICAR SE TODOS OS BOOLEANOS SÃO VERDADEIROS)
 console.log("Todos os animes foram finalizados?\n"+(anime1.emandamento&&anime2.emandamento&&anime3.emandamento))
 
+//Exercicio 1.6 - Alternando o nome, titulo em maiusculo
+anime1.nome = anime1.nome.toLocaleUpperCase()
+anime2.nome = anime2.nome.toLocaleUpperCase()
+anime3.nome = anime3.nome.toLocaleUpperCase()
+
 //Novo Array vazio para armazenar todos os objetos (anime1, anime2 e anime3) criados até aqui
 const listaAnime = []
+const listaAnimeEncer = []
 
 //Condicional para incluir na nova lista somente as series classificados como finalizadas (propriedade "emandamento (boolean)" dos objetos
-if (anime1.emandamento === true){
+if (anime1.emandamento){
     listaAnime.push(anime1)
 }else{
-    alert(`A serie ${anime1.nome.toLocaleUpperCase()} já foi finalizada!`)
+    alert(`A serie ${anime1.nome} já foi finalizada!`)
+    listaAnimeEncer.push(anime1)
 }
-if (anime2.emandamento === true){
+if (anime2.emandamento){
     listaAnime.push(anime2)
 }else{
-    alert(`A serie ${anime2.nome.toLocaleUpperCase()} já foi finalizada!`)
+    alert(`A serie ${anime2.nome} já foi finalizada!`)
+    listaAnimeEncer.push(anime2)
 }
-if (anime3.emandamento === true){
+if (anime3.emandamento){
     listaAnime.push(anime3)
 }else{
-    alert(`A serie ${anime3.nome.toLocaleUpperCase()} já foi finalizada!`)
+    alert(`A serie ${anime3.nome} já foi finalizada!`)
+    listaAnimeEncer.push(anime3)
 }
 
-//Função utilizada para reescrever a propriedade dos meus objetos de array(genero) e
-//que ele guarde todas as propriedades em uma mesma string.
-function refatoracaoAnime (serie){
-    let novoAnime ="" //declaração de uma variável vazia para receber os valores declarados na propriedade de array
-    for(let i=0;i<serie.genero.length;i++){
-        novoAnime += serie.genero[i]+", " //acrescentar cada valor armazenado nos indices do Array na nova variável
-    }
-    serie.nome = serie.nome.toLocaleUpperCase()
-    serie.genero = novoAnime //devolver todo valor da nova variável a propriedade de array
-    return serie
+//SEMANA 3
+//Exercicio 1 - Retaforação
+for (let i in listaAnime ){
+    listaAnime[i].genero = listaAnime[i].genero.toString()
+    console.log(listaAnime[i])
 }
 
-//A chamada da função é o que permite a modificação da propriedade com array(genero) em uma string
-refatoracaoAnime(anime1)
-refatoracaoAnime(anime2)
-refatoracaoAnime(anime3)
+for (let i in listaAnimeEncer ){
+    listaAnimeEncer[i].genero = listaAnimeEncer[i].genero.toString()
+    console.log(listaAnimeEncer[i])
+}
 
-// //Relatório anterior para exibição da Lista de Animes
-console.log("Catálogo: ", listaAnime)
-
-//Novo relatório criado utilizando laço
+//Exercicio 2 - Novo relatório criado utilizando laço
 for(let i=0;i<listaAnime.length;i++){
     console.log(`Série ${i+1}`)
     console.log(listaAnime[i])
 }
 
-//Função para buscar uma série de acordo com o nome que o usuário digitar
+//Exercicio 3 - Função que receba como parametro um objeto e devolva a string
+function recebeObj (anime){
+
+    return anime.nome + "\n" + anime.avaliacao +"\n" + anime.emandamento +"\n"+anime.genero
+}
+
+for(let i=0;i<listaAnime.length;i++){
+    console.log("Lista de Animes em Andamento:\n"+ recebeObj(listaAnime[i]))
+}
+
+for(let i=0;i<listaAnimeEncer.length;i++){
+    console.log("Lista de Animes em Andamento:\n"+ recebeObj(listaAnimeEncer[i]))
+}
+
+//Exercicio 4 - Função para buscar uma série de acordo com o nome que o usuário digitar
 function buscaAnime(serie, item){
     let buscador = ""
-    for(i=0;i<serie.length;i++){
+    for(let i=0;i<serie.length;i++){
         if(item === serie[i].nome){
-            serie[i].nome = serie[i].nome.toLocaleUpperCase()
+            serie[i].nome = serie[i].nome
             buscador = serie[i]
+            console.log(serie[i].nome)
         }
     }
     serie = buscador
@@ -95,4 +111,4 @@ function buscaAnime(serie, item){
     return serie
 }
 
-console.log("Resultado: ", buscaAnime(listaAnime,buscaNome))
+console.log("\nResultado: ", buscaAnime(listaAnime,buscaNome))
