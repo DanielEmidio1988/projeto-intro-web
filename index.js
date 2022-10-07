@@ -1,5 +1,5 @@
-//Variável para armazenar o nome da Serie que o usuário deseja buscar
-const buscaNome = prompt("Digite a serie que busca").toLocaleUpperCase()
+// //Variável para armazenar o nome da Serie que o usuário deseja buscar
+// const buscaNome = prompt("Digite a serie que busca").toLocaleUpperCase()
 
 //OBJETO + STRING + NUMBER + BOOLEAN + ARRAY
 const anime1 = {
@@ -7,7 +7,8 @@ const anime1 = {
     avaliacao: 4.7,
     emandamento: true,
     genero: ["Ficção de Aventura","Fantasia"],
-    foto:""
+    foto:"onepiece.jpg",
+    link: "https://www.crunchyroll.com/pt-br/one-piece",
 }
 
 const anime2 = {  
@@ -15,7 +16,8 @@ const anime2 = {
     avaliacao: 4.7,
     emandamento: true,
     genero: ["Ficção de Aventura","Fantasia Cômica","Artes Marciais"],
-    foto:""
+    foto:"narutoshippuden.jpg",
+    link: "https://www.crunchyroll.com/pt-br/naruto-shippuden"
 }
 
 const anime3 = {
@@ -23,7 +25,8 @@ const anime3 = {
     avaliacao: 4.8,
     emandamento: true,
     genero: ["Ficção de Aventura","Fantasia","Artes Marciais"],
-    foto:""
+    foto:"hunterxhunter.jpg",
+    link: "https://www.crunchyroll.com/pt-br/hunter-x-hunter",
 }
 
 //CALCULAR MÉDIA
@@ -94,21 +97,71 @@ for(let i=0;i<listaAnimeEncer.length;i++){
     console.log("Lista de Animes em Andamento:\n"+ recebeObj(listaAnimeEncer[i]))
 }
 
-//Exercicio 4 - Função para buscar uma série de acordo com o nome que o usuário digitar
-function buscaAnime(serie, item){
-    let buscador = ""
-    for(let i=0;i<serie.length;i++){
-        if(item === serie[i].nome){
-            serie[i].nome = serie[i].nome
-            buscador = serie[i]
-            console.log(serie[i].nome)
-        }
-    }
-    serie = buscador
-    if(serie === ""){
-        alert("Nada foi encontrado!")
-    }
-    return serie
-}
+// //Exercicio 4 - Função para buscar uma série de acordo com o nome que o usuário digitar
+// function buscaAnime(serie, item){
+//     let buscador = ""
+//     for(let i=0;i<serie.length;i++){
+//         if(item === serie[i].nome){
+//             serie[i].nome = serie[i].nome
+//             buscador = serie[i]
+//             console.log(serie[i].nome)
+//         }
+//     }
+//     serie = buscador
+//     if(serie === ""){
+//         alert("Nada foi encontrado!")
+//     }
+//     return serie
+// }
 
-console.log("\nResultado: ", buscaAnime(listaAnime,buscaNome))
+// console.log("\nResultado: ", buscaAnime(listaAnime,buscaNome))
+
+
+
+
+
+const lista = document.querySelector(".box-catalogo")
+listaAnime.filter(serie =>{
+    function listarAnimes(){
+        lista.innerHTML += `<section class="filmes">
+        
+        <img src="./assets/${serie.foto}" alt="-Imagem-Serie">
+        <ul id="lista-0"><li><a href="${serie.link}" target="_blank">${serie.nome}</a></li>
+            <li>Avaliação: ${serie.avaliacao}</li>
+            <li>Em andamento: ${serie.emandamento}</li>
+            <li>Genero: ${serie.genero}</li>
+        </ul>
+    </section>`
+    }
+    listarAnimes()
+})
+
+// const buscaNome = document.getElementById("id-busca").toLocaleUpperCase()
+// listaAnime.filter()
+
+
+// function buscaAnime(){
+
+    
+//     for(let i=0;i<serie.length;i++){
+//         if(item === serie[i].nome){
+//             return list.innerHTML += `<section class="filmes">
+//             Itens da Lista
+//             <img src="./assets/${serie.foto}" alt="-Imagem-Serie">
+//             <ul id="lista-0"><li><a href="${serie.link}" target="_blank">${serie.nome}</a></li>
+//                 <li>${serie.avaliacao}</li>
+//                 <li>${serie.emandamento}</li>
+//                 <li>${serie.genero}</li>
+//             </ul>
+//         </section>`
+//         }//else{
+//             // alert("Nada foi encontrado!")
+//             // return list.innerHTML = ""
+//         //}
+//     }
+
+//     return serie
+// }
+
+
+// buscaAnime(listaAnime,"ONE PIECE")

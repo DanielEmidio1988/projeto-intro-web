@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Labenimes</title>
-    <!-- <script src="index.js"></script> -->
+    <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,24 +21,24 @@
             <form class="box-buscador">
                 <label for="busca"></label>
                 <input type="text" name="busca" id="id-busca" class="input-busca" placeholder="Pesquisar">
-                <button type="submit" class="button-buscar">Buscar</button>
+                <button type="submit" class="button-buscar" onclick="buscaAnime()">Buscar</button>
             </form>
 
                 <!-- 2ª divisão, seçtions -->
-            <div class="box-catalogo">
-                <section class="filmes">
-                    <!-- Itens da Lista -->
+            <div class="box-catalogo" id="id-box-catalogo">
+                <!-- <section class="filmes">
+                    Itens da Lista
                     <img src="./assets/onepiece.jpg" alt="One Piece">
-                    <ul><li><a href="https://www.crunchyroll.com/pt-br/one-piece" target="_blank">One Piece</a></li>
+                    <ul id="lista-0"><li><a href="https://www.crunchyroll.com/pt-br/one-piece" target="_blank">One Piece</a></li>
                         <li>Avaliação: 4.7</li>
                         <li>Em andamento: Sim</li>
                         <li>Genero: "Ficção de Aventura","Fantasia"</li>
                     </ul>
                 </section>
                 <section class="filmes">
-                    <!-- Itens da Lista -->
+                    Itens da Lista
                     <img src="./assets/narutoshippuden.jpg" alt="Naruto Shippuden">
-                    <ul><li><a href="https://www.crunchyroll.com/pt-br/naruto-shippuden" target="_blank">Naruto Shippuden</a></li>
+                     <ul id="lista-1"><li><a href="https://www.crunchyroll.com/pt-br/naruto-shippuden" target="_blank">Naruto Shippuden</a></li>
                         <li>Avaliação: 4.7</li>
                         <li>Em andamento: Não</li>
                         <li>Genero: "Ficção de Aventura","Fantasia Cômica","Artes Marciais"</li>
@@ -46,14 +46,14 @@
                 </section>
 
                 <section class="filmes">
-                    <!-- Itens da Lista -->
+                    Itens da Lista
                     <img src="./assets/hunterxhunter.jpg" alt="HunterxHunter">
                     <ul><li><a href="https://www.crunchyroll.com/pt-br/hunter-x-hunter" target="_blank">Hunter x Hunter</a></li>
                         <li>Avaliação: 4.8</li>
                         <li>Em andamento: Sim</li>
                         <li>Genero: "Ficção de Aventura","Fantasia","Artes Marciais"</li>
                     </ul>
-                </section>
+                </section> -->
             </div>
         
         </div>
