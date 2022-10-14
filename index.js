@@ -1,6 +1,8 @@
 // //Variável para armazenar o nome da Serie que o usuário deseja buscar
 // const buscaNome = prompt("Digite a serie que busca").toLocaleUpperCase()
 
+
+
 //OBJETO + STRING + NUMBER + BOOLEAN + ARRAY
 const anime1 = {
     nome: "One Piece",
@@ -117,9 +119,7 @@ for(let i=0;i<listaAnimeEncer.length;i++){
 // console.log("\nResultado: ", buscaAnime(listaAnime,buscaNome))
 
 
-
-
-
+//SEMANA 6 - APLICAÇÃO DOM
 const lista = document.querySelector(".box-catalogo")
 listaAnime.filter(serie =>{
     function listarAnimes(){
@@ -136,32 +136,23 @@ listaAnime.filter(serie =>{
     listarAnimes()
 })
 
-// const buscaNome = document.getElementById("id-busca").toLocaleUpperCase()
-// listaAnime.filter()
-
-
-// function buscaAnime(){
-
-    
-//     for(let i=0;i<serie.length;i++){
-//         if(item === serie[i].nome){
-//             return list.innerHTML += `<section class="filmes">
-//             Itens da Lista
-//             <img src="./assets/${serie.foto}" alt="-Imagem-Serie">
-//             <ul id="lista-0"><li><a href="${serie.link}" target="_blank">${serie.nome}</a></li>
-//                 <li>${serie.avaliacao}</li>
-//                 <li>${serie.emandamento}</li>
-//                 <li>${serie.genero}</li>
-//             </ul>
-//         </section>`
-//         }//else{
-//             // alert("Nada foi encontrado!")
-//             // return list.innerHTML = ""
-//         //}
-//     }
-
-//     return serie
-// }
-
-
-// buscaAnime(listaAnime,"ONE PIECE")
+function buscaAnime(event){
+    event.preventDefault()
+    let novaLista = document.getElementById("id-box-catalogo")
+    let nomeAnime = document.getElementById("id-busca").value.toLocaleUpperCase()
+    for (let i = 0; i < listaAnime.length; i++) {
+        if(nomeAnime === listaAnime[i].nome){
+            return (novaLista.innerHTML = `<section class="filmes">
+            <img src="./assets/${listaAnime[i].foto}" alt="-Imagem-Serie">
+            <ul id="lista-0"><li><a href="${listaAnime[i].link}" target="_blank">${listaAnime[i].nome}</a></li>
+                <li>Avaliação: ${listaAnime[i].avaliacao}</li>
+                <li>Em andamento: ${listaAnime[i].emandamento}</li>
+                <li>Genero: ${listaAnime[i].genero}</li>
+            </ul>
+        </section>`)
+        }
+    }
+    alert("Nada foi encontrado!");
+    document.getElementById("id-busca").value = "";
+    return;
+}

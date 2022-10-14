@@ -94,8 +94,10 @@ main{
     align-content: center;;
     margin-top: 5vh;
     width: 90%;
+    /* flex-wrap: wrap;  REMOVER APÓS AJUSTAR AS IMAGENS*/ 
 }
 
+/* CAIXA DOS FILMES, AJUSTAR AQUI! */
 .filmes{
     display: flex;
     margin-top: 6vh;
@@ -107,9 +109,11 @@ main{
     justify-items: center;   
 }
 
+/* EM SEGUIDA, AJUSTAR AS IMAGENS DENTRO DO BOX */
 .filmes img{
     height: 21vw;
-    padding: 1vw
+    padding: 1vw;
+    width: auto;
 }
 
 .filmes ul{
@@ -121,17 +125,7 @@ li{
     font-size: 2vh;
 }
 
-/* footer{
-    margin-top: 5vh;
-    display: grid;
-    justify-items: center;
-    align-items: center ;
-    background-color: #F2661F;
-    color: white;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    height: 7vh;
-} */
+
 
 footer{
     margin-top: 5vh;
